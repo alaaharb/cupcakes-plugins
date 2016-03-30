@@ -38,10 +38,11 @@ function glutenfree_register_post_type () {
 			'editor',
 			'excerpt',
 			'thumbnail',
+			'taxonomy',
 
 		),
 
-		'taxonomy' => array ('category', 'post_tag'),
+		'taxonomies' => array ('category', 'post_tag'),
 		'exclude_from_search' => false
 
 
