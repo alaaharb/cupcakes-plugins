@@ -1,8 +1,8 @@
 <?php
 /* 
-* Plugin Name: Recipes
+* Plugin Name: Gluten Free Recipes
 * Plugin URI: http://phoenix.sheridanc.on.ca/~ccit3443
-* Description: Creating and inserting new recipes reviews
+* Description: Creating and inserting new gluten free recipes
 * Author: Hala Ayyad, Alaa Harb, Mohammed Hussein
 * Author URI: http://phoenix.sheridanc.on.ca/~ccit3443
 * Version: 1.0 
