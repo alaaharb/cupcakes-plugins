@@ -1,0 +1,17 @@
+div .glutenfree-div
+{
+	float: left;
+	width: 600px;
+	clear: all;
+	
+}
+
+
+a li .glutenfree-listing
+{
+	float: left;
+	display: block;
+	vertical-align: left;
+	list-style-type: none;
+}
+
