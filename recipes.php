@@ -8,8 +8,12 @@
 * Version: 1.0 
 */
 
+
+// creating the custom post type 
 function glutenfree_register_post_type () {
 
+	
+	//changing the labels on the post page
 	$labels = array(
 		'name' => 'Gluten Free Recipes',
 		'singular' => 'Gluten Free',
@@ -21,6 +25,8 @@ function glutenfree_register_post_type () {
 		'search_item' => 'Search Posts',
 
 		);
+
+
 
 	$args= array( 
 		'public' => true, 
