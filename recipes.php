@@ -68,17 +68,50 @@ function glutenfreesc( $atts ) {
         'orderby' => 'date',
     ) );
     if ( $query->have_posts() ) { ?>
-    <h2>Try the latest Gluten Free Recipe!</h2>
-        <ul class="clothes-listing">
+    <div class="glutenfree-div">
+    	<h2>Try the latest Gluten Free Recipe!</h2>
             <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-            <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-
-            </li>
-            <?php endwhile;
+            <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <a class="glutenfree-listing" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+	</div>
+<?php if ( has_post_thumbnail() ) : ?>
+	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+	<img src="<?php the_post_thumbnail_url(); ?>"  width="280";/>
+	</a>
+	
+<?php endif; ?>
+	
+	<?php endwhile;
             wp_reset_postdata(); ?>
-        </ul>
+
+</div>               
     <?php $myvariable = ob_get_clean();
     return $myvariable;
     }
 }
+
+
+//enqueing the stylesheet (this code is from https://wpgurus.net/enqueue-scripts-style-sheets-on-shortcode-pages/)
+
+function prefix_enqueue($posts) {
+
+if ( empty($posts) || is_admin() )
+		return $posts;
+ 
+	$found = false;
+	foreach ($posts as $post) {
+		if ( has_shortcode($post->post_content, 'glutenfreesc') ){
+			$found = true;
+			break;
+		}
+	}
+
+ //if any shortcodes are found on the page, enqueue stylesheet mentioned above (in this case, /mystyle.css is what will be enqueued)
+	if ($found){
+		wp_enqueue_style("prefix-style", plugins_url("/mystyle.css", __FILE__), array(), "1.0", "all");
+	}
+	return $posts;
+}
+
+add_action('the_posts', 'prefix_enqueue' );
+?>
