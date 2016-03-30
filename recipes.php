@@ -38,16 +38,17 @@ function glutenfree_register_post_type () {
 			'editor',
 			'excerpt',
 			'thumbnail',
-			'taxonomy',
+			
 
 		),
 
-		'taxonomies' => array ('category', 'post_tag'),
+		
 		'exclude_from_search' => false
 
 
 	);
-
+// Registers a custom taxonomy (categories) for the gluten free custom post
+	register_taxonomy("glutenfree", array("glutenfree"), array("hierarchical" => true, "label" => "Categories of Gluten Free", "singular_label" => "typesofglutenfree", "rewrite" => true));
 	register_post_type('glutenfree', $args);
 
 }
